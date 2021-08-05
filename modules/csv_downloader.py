@@ -6,7 +6,9 @@ import pandas as pd
 
 from modules.utils import bcolors as bc
 
+
 OID_URL = 'https://storage.googleapis.com/openimages/2018_04/'
+
 
 def TTV(csv_dir, name_file, args_y):
     '''
@@ -20,6 +22,7 @@ def TTV(csv_dir, name_file, args_y):
     error_csv(name_file, csv_dir, args_y)
     df_val = pd.read_csv(CSV)
     return df_val
+
 
 def error_csv(file, csv_dir, args_y):
     '''
@@ -51,6 +54,7 @@ def error_csv(file, csv_dir, args_y):
         else:
             exit(1)
 
+
 def save(url, filename):
     '''
     Download the .csv file.
@@ -60,6 +64,7 @@ def save(url, filename):
     :return: None
     '''
     urllib.request.urlretrieve(url, filename, reporthook)
+
 
 def reporthook(count, block_size, total_size):
     '''

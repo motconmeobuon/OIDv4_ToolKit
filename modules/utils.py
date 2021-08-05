@@ -1,14 +1,15 @@
 import os
 from textwrap import dedent
 
+
 def images_options(df_val, args):
-    '''
+    """
     Manage the options for the images downloader.
 
     :param df_val: DataFrame Value.
     :param args: argument parser.
     :return: modified df_val
-    '''
+    """
     if args.image_IsOccluded is not None:
         rejectedID = df_val.ImageID[df_val.IsOccluded != int(args.image_IsOccluded)].values
         df_val = df_val[~df_val.ImageID.isin(rejectedID)]
@@ -31,6 +32,7 @@ def images_options(df_val, args):
 
     return df_val
 
+
 def mkdirs(Dataset_folder, csv_folder, classes, type_csv):
     '''
     Make the folder structure for the system.
@@ -43,7 +45,7 @@ def mkdirs(Dataset_folder, csv_folder, classes, type_csv):
     '''
 
     directory_list = ['train', 'validation', 'test']
-    
+
     if not type_csv == 'all':
         for class_name in classes:
             if not Dataset_folder.endswith('_nl'):
@@ -72,6 +74,7 @@ def mkdirs(Dataset_folder, csv_folder, classes, type_csv):
     if not os.path.exists(csv_folder):
         os.makedirs(csv_folder)
 
+
 def progression_bar(total_images, index):
     '''
     Print the progression bar for the download of the images.
@@ -95,7 +98,7 @@ def progression_bar(total_images, index):
             columns = right - left + 1
             rows = bottom - top + 1
         else:
-            columns, rows = 80, 25 # can't determine actual size - return default values
+            columns, rows = 80, 25  # can't determine actual size - return default values
     # for linux/gnu os
     else:
         rows, columns = os.popen('stty size', 'r').read().split()
@@ -107,6 +110,7 @@ def progression_bar(total_images, index):
     bar = "[{}{}] {}/{}".format('-' * index, ' ' * (toolbar_width - index), image_index, total_images)
     print(bar.rjust(int(columns)), end='\r')
 
+
 def show_classes(classes):
     '''imag
     Show the downloaded classes in the selected folder during visualization mode
@@ -114,6 +118,7 @@ def show_classes(classes):
     for n in classes:
         print("- {}".format(n))
     print("\n")
+
 
 def logo(command):
     '''
@@ -165,9 +170,10 @@ def logo(command):
             
         ''' + bc.ENDC)
 
+
 class bcolors:
     HEADER = '\033[95m'
-    
+
     INFO = '    [INFO] | '
     OKBLUE = '\033[94m[DOWNLOAD] | '
     WARNING = '\033[93m    [WARN] | '

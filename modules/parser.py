@@ -1,5 +1,6 @@
 import argparse
 
+
 def parser_arguments():
     '''
     Manage the input from the terminal.
@@ -14,7 +15,7 @@ def parser_arguments():
                         metavar="/path/to/OID/csv/",
                         help='Directory of the OID dataset folder')
     parser.add_argument('-y', '--yes', required=False, action='store_true',
-                        #metavar="Yes to download missing files",
+                        # metavar="Yes to download missing files",
                         help='ans Yes to possible download of missing files')
     parser.add_argument('--classes', required=False, nargs='+',
                         metavar="list of classes",
@@ -29,29 +30,34 @@ def parser_arguments():
 
     parser.add_argument('--image_IsOccluded', required=False, choices=['0', '1'],
                         metavar="1 or 0",
-                        help='Optional characteristic of the images. Indicates that the object is occluded by another object in the image.')
+                        help='Optional characteristic of the images. '
+                             'Indicates that the object is occluded by another object in the image.')
     parser.add_argument('--image_IsTruncated', required=False, choices=['0', '1'],
                         metavar="1 or 0",
-                        help='Optional characteristic of the images. Indicates that the object extends beyond the boundary of the image.')
+                        help='Optional characteristic of the images. '
+                             'Indicates that the object extends beyond the boundary of the image.')
     parser.add_argument('--image_IsGroupOf', required=False, choices=['0', '1'],
                         metavar="1 or 0",
-                        help='Optional characteristic of the images. Indicates that the box spans a group of objects (min 5).')
+                        help='Optional characteristic of the images. '
+                             'Indicates that the box spans a group of objects (min 5).')
     parser.add_argument('--image_IsDepiction', required=False, choices=['0', '1'],
                         metavar="1 or 0",
-                        help='Optional characteristic of the images. Indicates that the object is a depiction.')
+                        help='Optional characteristic of the images. '
+                             'Indicates that the object is a depiction.')
     parser.add_argument('--image_IsInside', required=False, choices=['0', '1'],
                         metavar="1 or 0",
-                        help='Optional characteristic of the images. Indicates a picture taken from the inside of the object.')
+                        help='Optional characteristic of the images. '
+                             'Indicates a picture taken from the inside of the object.')
 
     parser.add_argument('--multiclasses', required=False, default='0', choices=['0', '1'],
-                       metavar="0 (default) or 1",
-                       help='Download different classes separately (0) or together (1)')
+                        metavar="0 (default) or 1",
+                        help='Download different classes separately (0) or together (1)')
 
     parser.add_argument('--n_threads', required=False, metavar="[default 20]",
-                       help='Num of the threads to use')
+                        help='Num of the threads to use')
 
     parser.add_argument('--noLabels', required=False, action='store_true',
-                       help='No labels creations')
+                        help='No labels creations')
 
     parser.add_argument('--limit', required=False, type=int, default=None,
                         metavar="integer number",
